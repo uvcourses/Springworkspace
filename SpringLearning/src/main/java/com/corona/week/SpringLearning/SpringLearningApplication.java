@@ -1,13 +1,25 @@
 package com.corona.week.SpringLearning;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
+import com.corona.week.SpringLearning.basics.BinarySearch;
+
+@Configuration
+@ComponentScan
 public class SpringLearningApplication {
 
+	
 	public static void main(String[] args) {
-		SpringApplication.run(SpringLearningApplication.class, args);
-	}
+		
+		ApplicationContext app= new AnnotationConfigApplicationContext(
+				SpringLearningApplication.class); 
+		
+		 BinarySearch binarySearch=app.getBean(BinarySearch.class); 
+		 
+		 System.out.println(binarySearch);
 
+	}
 }
